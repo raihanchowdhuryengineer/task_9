@@ -1,0 +1,121 @@
+/* =========================================================
+   AIT Portfolio – main stylesheet
+   One external stylesheet controls every page (see style guide).
+   ========================================================= */
+
+/* ---- Style guide colours ---- */
+:root {
+  --paper: #eef1f4;   /* page background */
+  --white: #ffffff;   /* panels */
+  --ink: #1d2b3a;     /* headings and body text */
+  --slate: #56687a;   /* secondary text */
+  --teal: #0f6e8c;    /* links and buttons */
+  --sun: #f2c14e;     /* highlight, used sparingly */
+  --line: #cfd8e0;    /* borders */
+}
+
+/* ---- Base ---- */
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Source Sans 3", Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  font-family: "Space Grotesk", Arial, sans-serif;
+  line-height: 1.2;
+  margin: 0 0 0.5em;
+}
+h1 { font-size: 44px; }
+h2 { font-size: 30px; }
+h3 { font-size: 22px; }
+
+p { margin: 0 0 1em; max-width: 68ch; }
+
+a { color: var(--teal); }
+a:focus-visible { outline: 3px solid var(--sun); outline-offset: 3px; }
+
+img { max-width: 100%; height: auto; display: block; }
+
+/* ---- Layout grid: 1100px centred column ---- */
+.wrap { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+/* ---- Header and navigation (same on every page) ---- */
+.site-header { background: var(--ink); color: var(--white); }
+.site-header .wrap {
+  display: flex; flex-wrap: wrap; align-items: center;
+  justify-content: space-between; gap: 12px;
+  padding-top: 16px; padding-bottom: 16px;
+}
+.brand {
+  display: flex; align-items: center; gap: 12px;
+  color: var(--white); text-decoration: none;
+  font-family: "Space Grotesk", Arial, sans-serif; font-weight: 700; font-size: 20px;
+}
+.brand img { width: 40px; height: 40px; }
+.site-nav ul { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; }
+.site-nav a { color: var(--white); text-decoration: none; padding: 8px 12px; border-radius: 6px; }
+.site-nav a:hover { background: rgba(255, 255, 255, 0.12); }
+.site-nav a[aria-current="page"] { background: var(--sun); color: var(--ink); font-weight: 600; }
+
+/* ---- Page sections ---- */
+main { padding: 48px 0 64px; }
+.section { margin-bottom: 56px; }
+.intro { display: grid; grid-template-columns: 3fr 2fr; gap: 40px; align-items: center; }
+.lead { font-size: 22px; color: var(--slate); }
+.facts { background: var(--white); border: 1px solid var(--line); border-radius: 10px; padding: 24px; }
+.facts h2 { font-size: 22px; }
+.facts dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 6px 16px; }
+.facts dt { font-weight: 600; }
+.facts dd { margin: 0; }
+
+.button {
+  display: inline-block; background: var(--teal); color: var(--white);
+  padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: 600;
+}
+
+/* Featured work: one large project and two smaller ones (dominance) */
+.work { display: grid; grid-template-columns: 2fr 1fr; gap: 24px; }
+.work .feature { grid-row: span 2; }
+.tile { background: var(--white); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+.tile a { color: inherit; text-decoration: none; display: block; height: 100%; }
+.tile a:hover h3 { color: var(--teal); }
+.tile .text { padding: 16px 20px 20px; }
+.tile p { color: var(--slate); margin: 0; }
+
+/* Project write-ups: image on the left, text on the right */
+.project {
+  display: grid; grid-template-columns: 1fr 1.3fr; gap: 32px; align-items: start;
+  background: var(--white); border: 1px solid var(--line); border-radius: 10px;
+  padding: 28px; margin-bottom: 32px;
+}
+.tags { list-style: none; padding: 0; margin: 0 0 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.tags li { background: var(--paper); border: 1px solid var(--line); border-radius: 4px; padding: 2px 8px; font-size: 15px; }
+
+/* Tables */
+.table-scroll { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; background: var(--white); }
+th, td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { background: var(--ink); color: var(--white); font-family: "Space Grotesk", Arial, sans-serif; font-weight: 600; }
+
+.references { padding: 0; }
+.references li { list-style: none; margin-bottom: 14px; padding-left: 2em; text-indent: -2em; }
+
+/* ---- Footer ---- */
+.site-footer { border-top: 1px solid var(--line); padding: 24px 0; color: var(--slate); font-size: 15px; }
+.site-footer p { margin: 0; max-width: none; }
+
+/* ---- Responsive design: tablets and phones ---- */
+@media (max-width: 760px) {
+  body { font-size: 17px; }
+  h1 { font-size: 34px; }
+  h2 { font-size: 26px; }
+  .intro, .work, .project { grid-template-columns: 1fr; }
+  .work .feature { grid-row: auto; }
+  .site-header .wrap { flex-direction: column; align-items: flex-start; }
+}
